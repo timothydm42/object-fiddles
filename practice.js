@@ -3,8 +3,12 @@
 
 //Create an object called me. Give it a key of name with the value being your name, and another key of age with the value being your age. Then alert your name using dot notation.
 
-  //Code here
+var me = {
+  name: "Tim",
+  age: 30
+}
 
+alert(me.name);
 
 
 
@@ -15,18 +19,25 @@
 
 //Make a 'favoriteThings' object that contains the following keys: band, food, person, book, movie, holiday. Have the values to those keys be your favorite thing in that category.
 
-  //Code here
-
+var favoriteThings = {
+  band:"The Mars Volta",
+  food:"Korean",
+  person:"Rach",
+  book:"The Good Earth",
+  movie:"Payback",
+  holiday:"Thanksgiving"
+}
 
 //After you've made your object, add another key named 'car' with the value being your favorite car and then another key named 'brand' with the value being your favorite brand.
 
-  //Code here
+favoriteThings["car"] = "fleet truck";
+favoriteThings["brand"] = "Pendleton";
 
 
 //Now change the value of the food key in your favoriteThings object to be 'Chicken Nuggets' and change the value of the book key in your favoriteThings object to be 'Harry Potter'.
 
-  //Code here
-
+favoriteThings["food"] = "Chicken Nuggets";
+favoriteThings["book"] = "Harry Potter";
 
 
 
@@ -42,18 +53,18 @@ Set the value of that key to 'chapstick'.
 Using dot notation, add another key (or property) to your backPack object
 that is named color, with the value being the color of your backpack. */
 
-  //Code here
+var backPack = {};
+var item = "firstPocket"
+backPack[item] = "chapstick";
 
 //After you do the above, alert your entire backPack object.
 
-  //Code here
-
+alert(backPack);
 /*You probably noticed that it just alerted [object Object].
 Alerting to see the data in your Object doesn't work so well.
 Instead, console.log your whole backPack object and then check out the console. */
 
-  //Code here
-
+console.log(backPack);
 
 
 
@@ -64,11 +75,21 @@ Instead, console.log your whole backPack object and then check out the console. 
 
 //Create an 'alsoMe' object with the following properties name, age, height, gender, married, eyeColor, hairColor. Fill those properties in with the appropriate values.
 
-  //Code Here
+var alsoMe = {
+  name:"Wang",
+  age:76,
+  height:5.5,
+  gender:"Male",
+  married:"Married",
+  eyeColor:"Brown",
+  hairColor:"Brown"
+}
 
 //Now, loop through your object and alert every value. *Tyler --> 24 --> 6'0 --> Male, etc etc
 
-  //Code Here
+for(var key in alsoMe){
+  alert(alsoMe[key]);
+}
 
 
 
@@ -80,11 +101,19 @@ Instead, console.log your whole backPack object and then check out the console. 
 
 //Create an Object called 'album' with 5 keys named different song titles that you make up, with the values being the length of each song.
 
-  //Code Here
+var album = {
+  hey:20,
+  you:15,
+  get:35,
+  off:60,
+  of:45
+}
 
 //Now, loop through your album object alerting every song title individually.
 
-  //Code Here
+for(var key in album){
+  alert(album[key]);
+}
 
 
 
@@ -96,11 +125,19 @@ Instead, console.log your whole backPack object and then check out the console. 
 
 //Create an object called states that has 5 US states as properties with the values being their population (doesn't have to be accurate).
 
-  //Code Here
+var states = {
+  md:0,
+  ma:123,
+  az:698,
+  ca:50,
+  or:300
+}
 
 //Now, loop through your states object and if the states population is greater than 30K, alert that state.
 
-  //Code Here
+for (var key in states) {
+  if (states[key] > 30000) alert(states[key]);
+}
 
 
 
@@ -121,11 +158,18 @@ var user1 = {
 /*Above you're given a user object. Loop through the user object checking to make sure
 that each value is truthy. If it's not truthy, remove it from the object. */
 
-  //Code Here
+for (var key in user1) {
+  if (!user1[key]) delete user1[key];
+}
 
 //Once you get your truthy Object, Change the remaining values in the object to be specific to you (name: 'your name', username: 'your username'), rather than my information.
 
-  //Code Here
+var myInfo = ["Tim", "na", "na", "30"];
+var i = 0;
+for (var key in user1) {
+  user1[key] = myInfo[i];
+  i++;
+}
 
 
 
@@ -149,11 +193,12 @@ var user2 = {
 //Let's say I, the user, decided to change my name and email address to the following
 // name -> 'Tyler S. McGinnis', email -> 'tyler.mcginnis@devmounta.in'. Make that change.
 
-  //Code Here
+user2["name"] = "Tyler S. McGinnis";
+user2["email"] = "tyler.mcginnis@devmounta.in";
 
 //Now call the sayEmail method that's on the user object which will alert the users email
 
-  //Code Here
+user2.sayEmail();
 
 
 
@@ -165,17 +210,19 @@ var user2 = {
 
 //Create an empty object called methodCollection.
 
-  //Code Here
+var methodCollection = {};
 
 /*Now add two methods (functions that are properties on objects) to your methodCollection
 object. One called 'alertHello' which alerts 'hello' and another method called logHello
  which logs 'hello' to the console. */
 
-  //Code Here
+methodCollection.alertHello = function() {alert("hello")};
+methodCollection.logHello = function() {console.log("hello")};
 
 //Now call your alertHello and logHello methods.
 
-  //Code Here
+methodCollection.alertHello();
+methodCollection.logHello();
 
 
 
@@ -186,7 +233,13 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 // Create a function called makePerson which takes in name, birthday, ssn as its
 // parameters and returns a new object with all of the information that you passed in.
 
-  //Code Here
+function makePerson(name, birthday, ssn) {
+  var person = {};
+    person.name = name;
+    person.birthday = birthday;
+    person.ssn = ssn;
+  return person;
+}
 
 
 
@@ -196,11 +249,13 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
 
 // Create a function called makeCard which takes in cardNumber, expirationDate, and securityCode to make a Credit Card object and returns that object so that whenever you invoke makeCard, you get a brand new credit card.
 
-  //Code Here
-
-
-
-//NEXT PROBLEM
+function makeCard(cardNumber, expirationDate, securityCode) {
+  var card = {};
+    card.cardNumber = cardNumber;
+    card.expirationDate = expirationDate;
+    card.securityCode = securityCode;
+  return card;
+}
 
 
 
@@ -209,4 +264,13 @@ object. One called 'alertHello' which alerts 'hello' and another method called l
    Have bindCard merge the two parameters together into a new object which contains all the properties from the person as well as the creditcard. While Object.assign would give you the answer, specRunner requires an answer without using it.
 */
 
-  //Code Here
+function bindCard(person, card) {
+  var personCard = {};
+  for (var key in person) {
+    personCard[key] = person[key];
+  }
+  for (var key in card) {
+    personCard[key] = card[key];
+  }
+  return personCard;
+}
